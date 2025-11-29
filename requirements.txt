@@ -1,0 +1,2 @@
+# Core dependencies for searchpartyd parser
+cryptography>=41.0.0
