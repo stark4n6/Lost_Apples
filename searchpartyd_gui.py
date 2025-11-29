@@ -27,6 +27,13 @@ import threading
 from datetime import datetime
 from typing import Optional
 
+# Import PIL for image handling (logo display)
+try:
+    from PIL import Image, ImageTk
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
+
 
 class ToolTip:
     """
@@ -204,23 +211,84 @@ class SearchpartydGUI:
         self._create_action_buttons(main_frame)
         
     def _create_title_section(self, parent):
-        """Create the title section."""
+        """Create the title section with logo."""
         title_frame = ttk.Frame(parent)
         title_frame.grid(row=0, column=0, sticky=(tk.W, tk.E), pady=(0, 15))
+        title_frame.columnconfigure(1, weight=1)  # Allow middle column to expand
+        
+        # Left side: Title and subtitle
+        text_frame = ttk.Frame(title_frame)
+        text_frame.grid(row=0, column=0, sticky=tk.W)
         
         title_label = ttk.Label(
-            title_frame,
+            text_frame,
             text="Lost Apples",
             font=("TkDefaultFont", 16, "bold")
         )
         title_label.grid(row=0, column=0, sticky=tk.W)
         
         subtitle_label = ttk.Label(
-            title_frame,
+            text_frame,
             text="iOS FindMy Network & Bluetooth Tracker Data Parser",
             font=("TkDefaultFont", 10)
         )
         subtitle_label.grid(row=1, column=0, sticky=tk.W)
+        
+        # Right side: Logo
+        self._load_logo(title_frame)
+    
+    def _load_logo(self, parent_frame):
+        """
+        Load and display the application logo.
+        
+        The logo is resized to fit nicely in the title area (80px height)
+        while maintaining aspect ratio.
+        
+        Args:
+            parent_frame: The frame to place the logo in
+        """
+        if not PIL_AVAILABLE:
+            # PIL not installed, skip logo
+            return
+        
+        # Path to the logo file
+        logo_path = Path(__file__).parent / "lost_apple_graphic.png"
+        
+        if not logo_path.exists():
+            # Try alternate location (same directory as script)
+            logo_path = Path("lost_apple_graphic.png")
+            if not logo_path.exists():
+                # Logo not found, skip silently
+                return
+        
+        try:
+            # Open and resize the image
+            original_image = Image.open(logo_path)
+            
+            # Calculate new size maintaining aspect ratio
+            # Target height of 80 pixels for a nice fit in the header
+            target_height = 80
+            aspect_ratio = original_image.width / original_image.height
+            target_width = int(target_height * aspect_ratio)
+            
+            # Resize using high-quality resampling
+            resized_image = original_image.resize(
+                (target_width, target_height),
+                Image.Resampling.LANCZOS
+            )
+            
+            # Convert to PhotoImage for tkinter
+            # Store as instance variable to prevent garbage collection
+            self.logo_image = ImageTk.PhotoImage(resized_image)
+            
+            # Create label to display the logo
+            logo_label = ttk.Label(parent_frame, image=self.logo_image)
+            logo_label.grid(row=0, column=2, sticky=tk.E, padx=(20, 0))
+            
+        except Exception as e:
+            # If anything goes wrong loading the logo, just skip it
+            # Don't disrupt the user experience
+            print(f"Note: Could not load logo: {e}")
         
     def _create_input_section(self, parent):
         """Create the file input section."""

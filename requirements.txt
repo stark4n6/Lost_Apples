@@ -1,2 +1,5 @@
 # Core dependencies for searchpartyd parser
 cryptography>=41.0.0
+
+# Image handling for GUI logo display
+Pillow>=9.0.0
