@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick launcher for searchpartyd Parser GUI
+Quick launcher for Lost Apples GUI
 """
 
 import sys
