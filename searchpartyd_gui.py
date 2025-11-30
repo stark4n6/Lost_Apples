@@ -230,9 +230,16 @@ class SearchpartydGUI:
         subtitle_label = ttk.Label(
             text_frame,
             text="iOS FindMy Network & Bluetooth Tracker Data Parser",
-            font=("TkDefaultFont", 10)
+            font=("TkDefaultFont", 12)
         )
         subtitle_label.grid(row=1, column=0, sticky=tk.W)
+        
+        author_label = ttk.Label(
+            text_frame,
+            text="The Binary Hick (https://thebinaryhick.blog)",
+            font=("TkDefaultFont", 11)
+        )
+        author_label.grid(row=2, column=0, sticky=tk.W)
         
         # Right side: Logo
         self._load_logo(title_frame)
@@ -441,44 +448,13 @@ class SearchpartydGUI:
         action_frame.grid(row=4, column=0, sticky=(tk.W, tk.E))
         action_frame.columnconfigure(0, weight=1)  # Allow frame to expand
         
-        # Row 1: Primary action buttons (centered)
+        # Row 1: Results buttons (centered) - Export Results and Query Observations on top
         row1_frame = ttk.Frame(action_frame)
         row1_frame.grid(row=0, column=0, pady=(0, 5))
         
-        # Clear Log button
-        clear_btn = ttk.Button(
-            row1_frame,
-            text="Clear Log",
-            command=self._clear_log,
-            width=12
-        )
-        clear_btn.grid(row=0, column=0, padx=5)
-        
-        # Export Log button
-        export_btn = ttk.Button(
-            row1_frame,
-            text="Export Log",
-            command=self._export_log,
-            width=12
-        )
-        export_btn.grid(row=0, column=1, padx=5)
-        
-        # About button
-        about_btn = ttk.Button(
-            row1_frame,
-            text="About",
-            command=self._show_about,
-            width=10
-        )
-        about_btn.grid(row=0, column=2, padx=5)
-        
-        # Row 2: Results buttons (centered)
-        row2_frame = ttk.Frame(action_frame)
-        row2_frame.grid(row=1, column=0)
-        
         # Export Results button
         self.export_results_btn = ttk.Button(
-            row2_frame,
+            row1_frame,
             text="Export Results...",
             command=self._show_export_dialog,
             width=16,
@@ -488,13 +464,44 @@ class SearchpartydGUI:
         
         # Query Observations button (initially disabled)
         self.query_obs_btn = ttk.Button(
-            row2_frame,
+            row1_frame,
             text="Query Observations...",
             command=self._show_observations_query_dialog,
             width=20,
             state=tk.DISABLED
         )
         self.query_obs_btn.grid(row=0, column=1, padx=5)
+        
+        # Row 2: Secondary action buttons (centered) - Clear Log, Export Log, About
+        row2_frame = ttk.Frame(action_frame)
+        row2_frame.grid(row=1, column=0)
+        
+        # Clear Log button
+        clear_btn = ttk.Button(
+            row2_frame,
+            text="Clear Log",
+            command=self._clear_log,
+            width=12
+        )
+        clear_btn.grid(row=0, column=0, padx=5)
+        
+        # Export Log button
+        export_btn = ttk.Button(
+            row2_frame,
+            text="Export Log",
+            command=self._export_log,
+            width=12
+        )
+        export_btn.grid(row=0, column=1, padx=5)
+        
+        # About button
+        about_btn = ttk.Button(
+            row2_frame,
+            text="About",
+            command=self._show_about,
+            width=10
+        )
+        about_btn.grid(row=0, column=2, padx=5)
         
     def _browse_searchpartyd_folder(self):
         """Open dialog to select searchpartyd folder."""
