@@ -144,7 +144,7 @@ class SearchpartydGUI:
             root: The tkinter root window
         """
         self.root = root
-        self.root.title("Lost Apples")
+        self.root.title("Lost Apples 1.0")
         self.root.geometry("900x700")
         self.root.resizable(True, True)
         
@@ -222,7 +222,7 @@ class SearchpartydGUI:
         
         title_label = ttk.Label(
             text_frame,
-            text="Lost Apples",
+            text="Lost Apples 1.0",
             font=("TkDefaultFont", 16, "bold")
         )
         title_label.grid(row=0, column=0, sticky=tk.W)

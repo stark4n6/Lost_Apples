@@ -1,12 +1,12 @@
 ![](lost_apple_graphic.png)
 
-# Lost Apples 🍎
+# Lost Apples 1.0 🍎
 
 **A tool for parsing iOS FindMy network and Bluetooth tracker data on iOS devices**
 
 For more information see the blog The Binary Hick:
 
-[Where the Wild Tags Are - Other AirTag Stories](https://thebinaryhick.blog/2024/09/02/where-the-wild-tags-are-other-airtag-stories/)
+[Where the Wild Tags Are & AirTag Stories](https://thebinaryhick.blog/2024/09/02/where-the-wild-tags-are-other-airtag-stories/)
 
 [Further Observations - More on iOS Search Party](https://thebinaryhick.blog/2025/08/19/further-observations-more-on-ios-search-party/)
 
@@ -18,12 +18,12 @@ For more information see the blog The Binary Hick:
 - **Keychain Parsing**: Automatically extracts the BeaconStore and Observations encryption keys from iOS keychain files
 - **Multi-Record Type Parsing**: Supports multiple different record types from the searchpartyd folder
 - **Observations.db Decryption**: Decrypts the SQLite database containing device observations with locations
-- **Cross-Platform**: Works on macOS and Windows
-- **Multiple Extraction Formats**: Processes UFED & Graykey extractions and individual com.apple.icloud.searchpartyd folders
-- **Direct Zip Processing**: Analyze full iOS extraction zip files without manual extraction
+- **Multiple Extraction Formats**: Processes UFED & Graykey extractions
+- **Direct Zip & Folder Processing**: Process commercial tool zip file extractions or process the com.apple.icloud.searchpartyd folder & associated keychain
 - **Export Options**: Export results to CSV and KML formats for further analysis
 - **Beacon Name Enrichment**: Links custom beacon names and emojis across related records
-- **Forensic Integrity**: Preserves original files while creating separate decrypted copies
+- **File Integrity**: Preserves original files while creating separate decrypted copies
+- **Cross-Platform**: Works on macOS and Windows
 
 ---
 
