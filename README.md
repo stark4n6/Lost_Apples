@@ -6,9 +6,9 @@
 
 For more information see the blog The Binary Hick:
 
-https://thebinaryhick.blog/2024/09/02/where-the-wild-tags-are-other-airtag-stories/
+[Where the Wild Tags Are - Other AirTag Stories](https://thebinaryhick.blog/2024/09/02/where-the-wild-tags-are-other-airtag-stories/)
 
-https://thebinaryhick.blog/2025/08/19/further-observations-more-on-ios-search-party/
+[Further Observations - More on iOS Search Party](https://thebinaryhick.blog/2025/08/19/further-observations-more-on-ios-search-party/)
 
 
 ---
@@ -165,14 +165,6 @@ Decrypted Observations.db and the associated write-ahead-log (-WAL) file are aut
 
 - **Observations.db queries**: CSV and KML exports are sent to the working directory when the queries are run
 
----
-
-## Reference Articles
-
-For technical background on iOS FindMy device forensics:
-
-- [Where the Wild Tags Are - Other AirTag Stories](https://thebinaryhick.blog/2024/09/02/where-the-wild-tags-are-other-airtag-stories/)
-- [Further Observations - More on iOS Search Party](https://thebinaryhick.blog/2025/08/19/further-observations-more-on-ios-search-party/)
 
 ---
 
