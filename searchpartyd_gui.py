@@ -432,15 +432,15 @@ class SearchpartydGUI:
             wrap=tk.WORD,
             width=80,
             height=20,
-            font=("Courier", 9)
+            font=("Courier", 12)
         )
         self.status_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-        
-        # Configure text tags for colored output
-        self.status_text.tag_config("header", foreground="blue", font=("Courier", 9, "bold"))
-        self.status_text.tag_config("success", foreground="green")
-        self.status_text.tag_config("error", foreground="red")
-        self.status_text.tag_config("warning", foreground="orange")
+
+        # Configure text tags for colored output (bright colors for dark background)
+        self.status_text.tag_config("header", foreground="#5DADE2", font=("Courier", 12, "bold"))  # Light sky blue
+        self.status_text.tag_config("success", foreground="#58D68D")  # Light green
+        self.status_text.tag_config("error", foreground="#F1948A")    # Light coral/salmon
+        self.status_text.tag_config("warning", foreground="#F7DC6F")  # Light yellow/gold
         
     def _create_action_buttons(self, parent):
         """Create the action buttons section."""
